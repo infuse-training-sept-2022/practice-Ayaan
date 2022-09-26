@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-class DuplicateCharacters {  
+class Duplicate_Character{  
         public static void main(String[] args) {  
            String string1 = "Great responsibility";  
            int count;  
