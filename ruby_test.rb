@@ -12,6 +12,10 @@ class SimpleNumber
     def multiply(y)
       @x * y
     end
+
+    def divide(y)
+      @x/y
+    end
   
   end
 
@@ -23,6 +27,7 @@ class TestSimpleNumber < Test::Unit::TestCase
   def test_simple
     assert_equal(4, SimpleNumber.new(2).add(2) )
     assert_equal(6, SimpleNumber.new(2).multiply(3) )
+    assert_equal(5, SimpleNumber.new(20).divide(4))
   end
  
 end
