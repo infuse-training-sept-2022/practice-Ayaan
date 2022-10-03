@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                git branch: 'jenkins/java', url: 'https://github.com/infuse-training-sept-2022/practice-Ayaan.git'
+                bat 'javac Duplicate_Character.java'
+            }
+        }
+        stage('Run') {
+            steps {
+                echo 'Running..'
+                bat 'java Duplicate_Character'
+            }
+        }
+    }
+}

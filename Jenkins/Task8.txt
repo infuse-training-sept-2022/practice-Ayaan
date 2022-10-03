@@ -1,0 +1,15 @@
+import groovy.json.JsonSlurperClassic
+
+node("Slave"){
+    stage('Get_Post'){
+        def postmanGet = new URL('https://jsonplaceholder.typicode.com/todos')
+        def getConnection = postmanGet.openConnection()
+        getConnection.requestMethod = 'GET'
+        assert getConnection.responseCode == 200
+        def restResponse = getConnection.getInputStream().getText()
+        
+        def list =  new JsonSlurperClassic().parseText(restResponse)
+        
+        list.each {if(it.completed == true){println it}}
+    }
+}
