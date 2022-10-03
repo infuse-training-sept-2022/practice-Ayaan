@@ -1,0 +1,22 @@
+pipeline {
+    agent {label 'Slave'}
+    stages {
+        stage('clone') {
+            steps {
+                git branch: 'jenkins/ruby-1', url: 'https://github.com/infuse-training-sept-2022/practice-Ayaan.git'
+            }
+        }
+        stage('Run') {
+            steps {
+                bat 'ruby ruby_test.rb'
+            }
+        }
+        stage('Merge') {
+            steps {
+            bat 'git checkout jenkins/ruby'
+            bat 'git merge jenkins/ruby-1'
+            bat 'git push origin jenkins/ruby'
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+pipeline {
+    agent {label 'Slave'}
+    stages {
+        stage('Clone') {
+            steps {
+                echo "Cloning"
+                git branch: 'jenkins/ruby', url: "${repo_url}"
+            }
+        }
+        stage('Run') {
+            steps {
+                echo "Running"
+                bat 'ruby ruby_test.rb'
+            }
+        }
+    }
+}
